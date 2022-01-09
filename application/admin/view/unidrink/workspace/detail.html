@@ -1,0 +1,63 @@
+<form id="add-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+
+    <ul class="list-group">
+        <li class="list-group-item">
+            订单编号：{$order.out_trade_no}
+        </li>
+        <li class="list-group-item">
+            订单类型：{$order.type == 1 ? '自取': '外卖'}
+        </li>
+        {if condition="$order['type'] == 2"}
+        <li class="list-group-item">
+            配送信息：{$address.address . ' '. $address.door_number . ' ' } <span style="color: #00BA0C">{$address.name . ' '}</span>{$address.mobile}
+        </li>
+        {/if}
+        <li class="list-group-item">
+            订单备注：{$order.remark ? $order.remark : '无'}
+        </li>
+        <li class="list-group-item">
+            订单金额：￥{$order.order_price}
+        </li>
+        <li class="list-group-item">
+            实付金额：￥{$order.total_price}元 (包含优惠￥{$order.discount_price}，配送费￥{$order.delivery_price})
+        </li>
+    </ul>
+
+    <style>
+        .media{
+            border-bottom: 1px solid #f1f1f1;
+        }
+
+        .media-left img {
+            width: 100px;
+            height: 100px;
+        }
+
+        .total-price {
+            color: #ff5f17;
+        }
+    </style>
+    {foreach $product as $key => $item}
+    <div class="media">
+        <div class="media-left media-middle">
+            <a href="#">
+                <img class="media-object" src="{$config.upload.cdnurl . $item.image}" alt="...">
+            </a>
+        </div>
+        <div class="media-body">
+            <div>商品ID:{$item.product_id}</div>
+            <h4 class="media-heading">{$item.title}</h4>
+            <div>规格：{$item.spec ? $item.spec : '无'}</div>
+            <div>{$item.number} ✖ {$item.price}</div>
+            <div class="total-price">总共：{$item.price * $item.number} 元</div>
+        </div>
+    </div>
+    {/foreach}
+
+    <div class="form-group layer-footer">
+        <div class="col-xs-12 col-sm-8">
+            <input type="hidden" name="id" value="{$order.id}">
+            <button type="submit" class="btn btn-success btn-embossed">出单</button>
+        </div>
+    </div>
+</form>

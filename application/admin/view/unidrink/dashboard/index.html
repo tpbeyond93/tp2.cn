@@ -1,0 +1,184 @@
+<style type="text/css">
+
+    .sm-st-info span {
+        display: block;
+        font-size: 24px;
+        font-weight: 600;
+    }
+
+    #statistics .panel {
+        min-height: 150px;
+    }
+
+    #statistics .panel h5 {
+        font-size: 13px;
+    }
+</style>
+<div class="panel panel-default panel-intro">
+    <div class="panel-heading">
+        {:build_heading(null, false)}
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#one" data-toggle="tab">{:__('Dashboard')}</a></li>
+            <li><a href="#two" data-toggle="tab">{:__('Custom')}</a></li>
+        </ul>
+    </div>
+    <div class="panel-body">
+        <div id="myTabContent" class="tab-content">
+            <div class="tab-pane fade active in" id="one">
+                <div class="widget-body no-padding" style="margin-top:15px;" id="statistics">
+
+                    <div class="col-xs-6 col-md-2">
+                        <div class="panel bg-green-gradient no-border">
+                            <div class="panel-body">
+                                <div class="ibox-title">
+                                    <h5>{:__('Order count')}</h5>
+                                </div>
+                                <div class="ibox-content">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <h1 class="no-margins">{$orderNums}</h1>
+                                            <div class="font-bold"><i class="fa fa-print"></i>
+                                                <small>{:__('Order count tips')}</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-6 col-md-2">
+                        <div class="panel bg-aqua-gradient no-border">
+                            <div class="panel-body">
+                                <div class="ibox-title">
+                                    <h5>{:__('Store count')}</h5>
+                                </div>
+                                <div class="ibox-content">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <h1 class="no-margins">{$storeNums}</h1>
+                                            <div class="font-bold"><i class="fa fa-shopping-bag"></i>
+                                                <small>{:__('Store count tips')}</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-6 col-md-2">
+                        <div class="panel bg-purple-gradient no-border">
+                            <div class="panel-body">
+                                <div class="ibox-title">
+                                    <h5>{:__('Goods count')}</h5>
+                                </div>
+                                <div class="ibox-content">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <h1 class="no-margins">{$goodsNums}</h1>
+                                            <div class="font-bold"><i class="fa fa-product-hunt"></i>
+                                                <small>{:__('Goods count tips')}</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-xs-6 col-md-2">
+                        <div class="panel bg-blue-gradient no-border">
+                            <div class="panel-body">
+                                <div class="panel-title">
+                                    <h5>{:__('Category count')}</h5>
+                                </div>
+                                <div class="panel-content">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <h1 class="no-margins">{$totalCategory}</h1>
+                                            <div class="font-bold"><i class="fa fa-align-justify"></i>
+                                                <small>{:__('Category count tips')}</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-6 col-md-2">
+                        <div class="panel bg-red-gradient no-border">
+                            <div class="panel-body">
+                                <div class="panel-title">
+                                    <h5>{:__('Coupon count')}</h5>
+                                </div>
+                                <div class="panel-content">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <h1 class="no-margins">{$totalCoupon}</h1>
+                                            <div class="font-bold"><i class="fa fa-gratipay"></i>
+                                                <small>{:__('Coupon count tips')}</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-6 col-md-2">
+                        <div class="panel bg-yellow-gradient no-border">
+                            <div class="panel-body">
+                                <div class="panel-title">
+                                    <h5>{:__('Ads count')}</h5>
+                                </div>
+                                <div class="panel-content">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <h1 class="no-margins">{$totalAds}</h1>
+                                            <div class="font-bold"><i class="fa fa-buysellads"></i>
+                                                <small>{:__('Ads count tips')}</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 商品销量。每天，每月，每年，能导出 -->
+                <div class="widget-body  col-lg-12 col-xs-12 col-md-12 table-bordered">
+                    <h3>{:__('Goods sales')}</h3>
+                    <table id="tableGoods" class="table table-bordered table-hover table-nowrap"
+                           width="100%">
+                    </table>
+                </div>
+
+                <!-- 收入明细。每天，每月，每年，能导出 -->
+                <div class="widget-body  col-lg-12 col-xs-12 col-md-12 table-bordered">
+                    <h3>{:__('Revenue statistics')}</h3>
+                    <table id="table" class="table table-bordered table-hover table-nowrap"
+                           width="100%">
+                    </table>
+                    <div class="col-lg-12">
+                        <div id="orderNum" class="btn-refresh" style="height:200px;width:100%;"></div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div id="orderMoney" class="btn-refresh" style="height:200px;width:100%;"></div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="tab-pane fade" id="two">
+                <div class="row">
+                    <div class="col-xs-12">
+                        {:__('Custom zone')}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

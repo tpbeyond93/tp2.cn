@@ -1,0 +1,83 @@
+<div class="panel panel-default panel-intro">
+    {:build_heading()}
+
+    <div class="panel-body">
+        <div id="myTabContent" class="tab-content">
+            <div class="tab-pane fade active in" id="one">
+                <div class="widget-body no-padding">
+                    <div id="toolbar" class="toolbar">
+<!--                        <a class="btn btn-success btn-add" href="javascript:;"><i class="fa fa-plus"></i>下单</a>-->
+<!--                        <a class="btn btn-success btn-reset" href="javascript:;"><i class="fa fa-refresh"></i>重置取餐号</a>-->
+
+                        {:build_toolbar('refresh')}
+                        <a class="btn">选择门店：{$shopList}</a>
+                    </div>
+
+                    <table id="table" class="table table-striped table-hover" width="100%">
+
+                    </table>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<script>
+    workspace_refresh = '{$workspace_refresh}' ? {$workspace_refresh} * 1000 : 10000;
+    unidrink_shop_id = '{$shop_id}' ? {$shop_id}: 0;
+</script>
+<style type="text/css">
+    .example {
+        height:100%;position: relative;
+    }
+    .example > span {
+        position:absolute;left:15px;top:15px;
+    }
+    .caption {
+        padding: 0!important;
+    }
+    .caption .button {
+        text-align: center;
+    }
+</style>
+
+<script id="itemtpl" type="text/html">
+    <!--
+    如果启用了templateView,默认调用的是itemtpl这个模板，可以通过设置templateFormatter来修改
+    在当前模板中可以使用三个变量(item:行数据,i:当前第几行,data:所有的行数据)
+    此模板引擎使用的是art-template的native,可参考官方文档
+    -->
+
+    <div class="col-sm-3 col-md-2 col-lg-2">
+        <!--下面四行是为了展示随机图片和标签，可移除-->
+        <% var labelarr = ['primary', 'success', 'info', 'danger', 'warning']; %>
+        <% var label = labelarr[item.id % 5]; %>
+        <div class="thumbnail example">
+<!--            <span class="btn btn-<%=label%>">ID:<%=item.id%></span>-->
+<!--            <img src="<%=item.image_text%>" style="width:100%;" alt="<%=item.title%>">-->
+            <div class="caption">
+                <h4>取餐号：<%=item.number_id%></h4>
+                <p><%=item.createtime_text%></p>
+                <p>取餐时间: <%=item.gettime_text%></p>
+                <p>类型:<%=item.type == 1?'自取':'外卖'%></p>
+                <p>耗时：<%=item.time_consuming%></p>
+<!--                <p class="text-muted">操作者IP:<%=item.ip%></p>-->
+<!--                <p class="text-muted">操作时间:<%=Moment(item.createtime*1000).format("YYYY-MM-DD HH:mm:ss")%></p>-->
+                <p class="button">
+                    <!--详情的事件需要在JS中手动绑定-->
+                    <a href="#" class="btn btn-primary btn-success btn-detail" data-id="<%=item.id%>" data-number_id="<%=item.number_id%>"> 详情</a>
+                    <a href="#" class="btn btn-primary btn-success btn-done" data-id="<%=item.id%>" data-number_id="<%=item.number_id%>"> 出单</a>
+
+                    <!--如果需要响应编辑或删除事件，可以给元素添加 btn-edit或btn-del的类和data-id这个属性值-->
+<!--                    <a href="#" class="btn btn-primary btn-edit" data-id="<%=item.id%>"><i class="fa fa-pencil"></i> 编辑</a>-->
+                    <a href="#" class="btn btn-danger btn-cancel" data-id="<%=item.id%>" data-number_id="<%=item.number_id%>"><i class="fa fa-times"></i></a>
+<!--                    <span class="pull-right" style="margin-top:10px;">-->
+<!--                        &lt;!&ndash;如果需要多选操作，请确保有下面的checkbox元素存在,可移除&ndash;&gt;-->
+<!--                        <input name="checkbox" data-id="<%=item.id%>" type="checkbox" />-->
+<!--                    </span>-->
+                </p>
+            </div>
+        </div>
+    </div>
+</script>

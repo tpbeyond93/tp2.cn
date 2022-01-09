@@ -1,0 +1,25 @@
+<?php
+
+return [
+    'Name'       => '店铺名称',
+    'Mobile'     => '店铺电话',
+    'Address'    => '详细地址',
+    'Admin_id'   => '管理员id',
+    'Starttime'  => '营业开始时间',
+    'Endtime'    => '营业结束时间',
+    'Lng'        => '经度',
+    'Lat'        => '纬度',
+    'City_id'    => '所在城市id',
+    'Createtime' => '创建时间',
+    'Updatetime' => '更新时间',
+    'Deletetime' => '删除时间',
+    'Address map' => '地图定位地址',
+    'Select map location' => '选择地图定位',
+    'Status' => '是否营业',
+    'Distance' => '外卖配送距离/公里',
+    'Notice' => '公告',
+    'Min price' => '起送价钱',
+    'Delivery price' => '配送价钱',
+    'Image' => '门店头像',
+    'Images' => '门店组图',
+];

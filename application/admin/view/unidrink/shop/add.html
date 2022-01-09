@@ -1,0 +1,181 @@
+<form id="add-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Name')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-name" data-rule="required" class="form-control" name="row[name]" type="text">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Mobile')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-mobile" data-rule="required" class="form-control" name="row[mobile]" type="text">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Image')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <div class="input-group">
+                <input id="c-image" data-rule="required" class="form-control" size="50" name="row[image]" type="text"
+                       value="">
+                <div class="input-group-addon no-border no-padding">
+                    <span><button type="button" id="plupload-image" class="btn btn-danger plupload"
+                                  data-input-id="c-image"
+                                  data-mimetype="image/gif,image/jpeg,image/png,image/jpg,image/bmp"
+                                  data-multiple="false" data-preview-id="p-image"><i class="fa fa-upload"></i> {:__('Upload')}</button></span>
+                    <span><button type="button" id="fachoose-image" class="btn btn-primary fachoose"
+                                  data-input-id="c-image" data-mimetype="image/*" data-multiple="false"><i
+                            class="fa fa-list"></i> {:__('Choose')}</button></span>
+                </div>
+                <span class="msg-box n-right" for="c-image"></span>
+            </div>
+            <ul class="row list-inline plupload-preview" id="p-image"></ul>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Images')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <div class="input-group">
+                <input id="c-images" data-rule="" class="form-control" size="50" name="row[images]" type="text"
+                       value="">
+                <div class="input-group-addon no-border no-padding">
+                    <span><button type="button" id="plupload-images" class="btn btn-danger plupload"
+                                  data-input-id="c-images"
+                                  data-mimetype="image/gif,image/jpeg,image/png,image/jpg,image/bmp"
+                                  data-multiple="true" data-preview-id="p-images"><i class="fa fa-upload"></i> {:__('Upload')}</button></span>
+                    <span><button type="button" id="fachoose-images" class="btn btn-primary fachoose"
+                                  data-input-id="c-images" data-mimetype="image/*" data-multiple="true"><i
+                            class="fa fa-list"></i> {:__('Choose')}</button></span>
+                </div>
+                <span class="msg-box n-right" for="c-images"></span>
+            </div>
+            <ul class="row list-inline plupload-preview" id="p-images"></ul>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Starttime')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-starttime" data-rule="required" class="form-control datetimepicker" data-date-format=" HH:mm"
+                   data-use-current="true" name="row[starttime]" type="text" value="{:date('H:i')}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Endtime')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-endtime" data-rule="required" class="form-control datetimepicker" data-date-format=" HH:mm"
+                   data-use-current="true" name="row[endtime]" type="text" value="{:date('H:i')}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Select map location')}:</label>
+        <div class="col-xl-12 col-sm-8">
+            <button type="button" class="btn btn-primary" data-toggle='addresspicker' data-input-id="c-address_map"
+                    data-lng-id="c-lng" data-lat-id="c-lat">点击选择地址获取经纬度
+            </button>
+            <span class="help-block">提示：若点击无反应需下载插件《地图位置(经纬度)选择插件》</span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Address map')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-address_map" data-rule="required" class="form-control" name="row[address_map]" type="text">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Lng')}:</label>
+        <div class="col-xs-12 col-sm-3">
+            <input id="c-lng" data-rule="required" class="form-control" name="row[lng]" type="number">
+        </div>
+        <label class="control-label col-xs-12 col-sm-2">{:__('Lat')}:</label>
+        <div class="col-xs-12 col-sm-3">
+            <input id="c-lat" data-rule="required" class="form-control" name="row[lat]" type="number">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('City_id')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <div class="form-inline" data-toggle="cxselect" data-selects="province,city,area">
+                <select data-rule="required" class="province form-control col-sm-4" name="row[province]"
+                        data-url="unidrink/shop/area"></select>
+                <select data-rule="required" class="city form-control col-sm-4" name="row[city]"
+                        data-url="unidrink/shop/area"></select>
+                <select data-rule="required" class="area form-control col-sm-4" name="row[area]"
+                        data-url="unidrink/shop/area"></select>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Address')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-address" data-rule="required" class="form-control" name="row[address]" type="text">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Distance')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-distance" data-rule="required" class="form-control" name="row[distance]" type="number"
+                   value="0" min="0">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Min price')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-min_price" data-rule="required" class="form-control" name="row[min_price]" type="number"
+                   value="0" min="0">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Delivery price')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-delivery_price" data-rule="required" class="form-control" name="row[delivery_price]"
+                   type="number" value="0" min="0">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Notice')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-notice" data-rule="" class="form-control" name="row[notice]" type="text">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="c-admin_id" class="control-label col-xs-12 col-sm-2">{:__('绑定管理员')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            {if $auth->isSuperAdmin() }
+            <input id="c-admin_id" data-rule="required" data-multiple="true" data-field="nickname"
+                   data-source="auth/admin/index" class="form-control selectpage" name="row[admin_id]" type="text"
+                   value="">
+            {else/}
+            <input class="form-control" disabled="true" placeholder="超级管理员才能设置绑定">
+            {/if}
+            <span class="help-block">绑定的管理员才可以接收新订单通知和编辑店铺信息</span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="c-admin_id" class="control-label col-xs-12 col-sm-2">{:__('绑定打印机')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            {if condition="!get_addon_info('uniprint')"}
+            <input class="form-control" disabled="true" placeholder="请先安装插件《web云打印机》">
+            {elseif condition="!$auth->check('uniprint/printer/index')"/}
+            <input class="form-control" disabled="true" placeholder="若是非超管请确保当前管理员拥有访问打印机权限">
+            {else/}
+            <input id="c-uniprint_id" data-rule="" data-field="name" data-multiple="true"
+                   data-source="uniprint/printer/index" class="form-control selectpage" name="row[uniprint_id]"
+                   type="text" value="">
+            {/if}
+            <span class="help-block">绑定店铺所使用的打印机，若不绑定则全部一起使用</span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Status')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            {:build_radios('row[status]', ['1'=>__('Yes'), '0'=>__('No')], 1)}
+        </div>
+    </div>
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-success btn-embossed disabled">{:__('OK')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+</form>

@@ -1,7 +1,7 @@
 <?php
 
 return array (
-  'name' => '我的网站',
+  'name' => '凡码数字经营2.0',
   'beian' => '',
   'cdnurl' => '',
   'version' => '1.0.2',
