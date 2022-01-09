@@ -264,7 +264,7 @@ return [
         //会员注册验证码类型email/mobile/wechat/text/false
         'user_register_captcha' => 'text',
         //登录验证码
-        'login_captcha'         => true,
+        'login_captcha'         => false,
         //登录失败超过10次则1天后重试
         'login_failure_retry'   => true,
         //是否同一账号同一时间只能在一个地方登录
@@ -278,7 +278,7 @@ return [
         //是否开启多选项卡(仅在开启多级菜单时起作用)
         'multipletab'           => true,
         //后台皮肤,为空时表示使用skin-black-green
-        'adminskin'             => '',
+        'adminskin'             => 'skin-blue',
         //后台是否启用面包屑
         'breadcrumb'            => false,
         //是否允许未知来源的插件压缩包
